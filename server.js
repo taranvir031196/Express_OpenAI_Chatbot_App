@@ -5,6 +5,7 @@ var bodyParser = require('body-parser')
 require('dotenv').config()
 
 const app = express()
+const PORT = process.env.PORT || 3000;
 
 // parse application/json
 app.use(bodyParser.json())
@@ -30,6 +31,7 @@ app.post("/chat", async (req, res) => {
         res.status(400).json({ message: e.message })
     }
 })
-app.listen(process.env.PORT, () => {
-    console.log(`OpenAI Chatbot is active on ${process.env.PORT}`)
+
+app.listen(PORT, () => {
+    console.log(`OpenAI Chatbot is active on ${PORT}`)
 })
