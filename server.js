@@ -25,8 +25,9 @@ app.post("/api/chat", async (req, res) => {
                 { role: "user", content: req.body.question }
             ]
         })
-
-        res.status(200).json({ message: resp.data.choices[0].message.content })
+        setTimeout((() => {
+            res.status(200).json({ message: resp.data.choices[0].message.content })
+        }), 10000)
     } catch (e) {
         res.status(400).json({ message: e.message })
     }
