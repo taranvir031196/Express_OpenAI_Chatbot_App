@@ -1,5 +1,6 @@
 const { Configuration, OpenAIApi } = require("openai")
 const express = require('express')
+const delay = require('express-delay')
 var bodyParser = require('body-parser')
 
 require('dotenv').config()
@@ -9,6 +10,8 @@ const PORT = process.env.PORT || 3000;
 
 // parse application/json
 app.use(bodyParser.json())
+
+app.use(delay(5000))
 
 app.use(express.static('public'))
 
@@ -25,9 +28,7 @@ app.post("/api/chat", async (req, res) => {
                 { role: "user", content: req.body.question }
             ]
         })
-        setTimeout((() => {
-            res.status(200).json({ message: resp.data.choices[0].message.content })
-        }), 10000)
+        res.status(200).json({ message: resp.data.choices[0].message.content })
     } catch (e) {
         res.status(400).json({ message: e.message })
     }
