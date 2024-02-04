@@ -20,6 +20,8 @@ const createChatLi = (message, className) => {
 const generateResponse = (chatElement) => {
     const API_URL = "/api/chat";
     const messageElement = chatElement.querySelector("p");
+    const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
 
     // Define the properties and message for the API request
     const requestOptions = {
@@ -33,7 +35,8 @@ const generateResponse = (chatElement) => {
     }
 
     // Send POST request to API, get response and set the reponse as paragraph text
-    fetch(API_URL, requestOptions).then(setTimeout((res) => res.json()), 15000).then(data => {
+    fetch(API_URL, requestOptions).then(res => res.json()).then(data => {
+        sleep(5000);
         messageElement.textContent = data.message;
     }).catch(() => {
         messageElement.classList.add("error");

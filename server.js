@@ -17,8 +17,6 @@ const openai = new OpenAIApi(new Configuration({
     apiKey: process.env.API_KEY
 }));
 
-const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-
 app.post("/api/chat", async (req, res) => {
     try {
         const resp = await openai.createChatCompletion({
@@ -27,7 +25,6 @@ app.post("/api/chat", async (req, res) => {
                 { role: "user", content: req.body.question }
             ]
         })
-        await sleep(10000)
         res.status(200).json({ message: resp.data.choices[0].message.content })
     } catch (e) {
         res.status(400).json({ message: e.message })
