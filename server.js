@@ -1,6 +1,5 @@
 const { Configuration, OpenAIApi } = require("openai")
 const express = require('express')
-const delay = require('express-delay')
 var bodyParser = require('body-parser')
 
 require('dotenv').config()
@@ -10,8 +9,6 @@ const PORT = process.env.PORT || 3000;
 
 // parse application/json
 app.use(bodyParser.json())
-
-app.use(delay(5000))
 
 app.use(express.static('public'))
 
