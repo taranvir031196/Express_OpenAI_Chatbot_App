@@ -18,7 +18,7 @@ const createChatLi = (message, className) => {
 }
 
 const generateResponse = (chatElement) => {
-    const API_URL = "https://express-open-ai-chatbot-crs55t2e5.vercel.app/chat";
+    const API_URL = "/api/chat";
     const messageElement = chatElement.querySelector("p");
 
     // Define the properties and message for the API request
