@@ -33,7 +33,7 @@ const generateResponse = (chatElement) => {
     }
 
     // Send POST request to API, get response and set the reponse as paragraph text
-    fetch(API_URL, requestOptions).then(res => res.json()).then(data => {
+    fetch(API_URL, requestOptions).then(setTimeout((res) => res.json()), 15000).then(data => {
         messageElement.textContent = data.message;
     }).catch(() => {
         messageElement.classList.add("error");
