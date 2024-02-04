@@ -17,6 +17,8 @@ const openai = new OpenAIApi(new Configuration({
     apiKey: process.env.API_KEY
 }));
 
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
 app.post("/api/chat", async (req, res) => {
     try {
         const resp = await openai.createChatCompletion({
