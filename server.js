@@ -11,8 +11,6 @@ const PORT = process.env.PORT || 3000;
 // parse application/json
 app.use(bodyParser.json())
 
-app.use(delay(2000))
-
 app.use(express.static('public'))
 
 const openai = new OpenAIApi(new Configuration({
