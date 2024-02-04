@@ -35,7 +35,7 @@ const generateResponse = (chatElement) => {
     // Send POST request to API, get response and set the reponse as paragraph text
     fetch(API_URL, requestOptions).then(res => res.json()).then(setTimeout((data) => {
         messageElement.textContent = data.message;
-    }), 5000).catch(() => {
+    }), 10000).catch(() => {
         messageElement.classList.add("error");
         messageElement.textContent = "Oops! Something went wrong. Please try again.";
     }).finally(() => chatbox.scrollTo(0, chatbox.scrollHeight));
