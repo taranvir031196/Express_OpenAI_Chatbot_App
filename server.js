@@ -1,6 +1,5 @@
 const { Configuration, OpenAIApi } = require("openai")
 const express = require('express')
-const delay = require('express-delay')
 var bodyParser = require('body-parser')
 
 require('dotenv').config()
